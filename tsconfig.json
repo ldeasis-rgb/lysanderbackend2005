@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "lib": ["ES2021"],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "incremental": true,
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "auth/**/*.ts",
+    "database/**/*.ts",
+    "users/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "mynestapp"
+  ]
+}

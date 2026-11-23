@@ -20,11 +20,20 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
       queueLimit: 0,
     });
 
-    // optional: test connection
     const conn = await this.pool.getConnection();
     await conn.ping();
+
+    // Tinitiyak na may sapat na laki ang refresh_token column para sa JWT
+    try {
+      await conn.query('ALTER TABLE users ADD COLUMN refresh_token TEXT NULL');
+    } catch {
+      await conn
+        .query('ALTER TABLE users MODIFY COLUMN refresh_token TEXT NULL')
+        .catch(() => {});
+    }
+
     conn.release();
-    console.log('MySQL pool created');
+    console.log('MySQL pool created and schema verified');
   }
 
   async onModuleDestroy() {
